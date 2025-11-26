@@ -1,0 +1,23 @@
+name: nako_car_service
+description: "Nako Car Service is a mobile application that allows customers to easily book appointments for vehicle inspections, diagnostics, and repairs. The app provides a simple and modern way to schedule service visits, choose available time slots, and stay informed about the status of their vehicle. Whether it’s a routine check-up or a repair request, Nako Car Service ensures fast, reliable, and organized appointment management for both customers and the service center."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  google_fonts: ^6.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/logo.png
