@@ -12,7 +12,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Image.asset('assets/logo.png', height: 28),
-          const SizedBox(width: 12),
+          SizedBox(width: 12),
           Text(
             'AUTO SERVIS "NAKO"',
             style: GoogleFonts.oswald(

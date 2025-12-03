@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "921146443622",
+    "project_id": "nako-car-service",
+    "storage_bucket": "nako-car-service.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:921146443622:android:2f58ba841bec6dbcbf6aa7",
+        "android_client_info": {
+          "package_name": "com.nako.car.service"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAW9pNxHy96zGZEBM2P9Td9JjK3JHieBW4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
