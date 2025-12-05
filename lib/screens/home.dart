@@ -12,6 +12,13 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "TVOJ AUTO - NAŠA BRIGA",
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.w400),
+              ),
+            ),
             _buildFeatureCard(
               title: "Kvalitet",
               description:
@@ -44,7 +51,7 @@ class HomeScreen extends StatelessWidget {
   }) {
     return Card(
       margin: EdgeInsets.symmetric(vertical: 10),
-      elevation: 3,
+      elevation: 4,
       child: Padding(
         padding: EdgeInsets.all(24.0),
         child: Column(

@@ -12,7 +12,12 @@
           "package_name": "com.nako.car.service"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "921146443622-m82t9d0io6d3cd5h76ekj2qr7ptnmrhi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAW9pNxHy96zGZEBM2P9Td9JjK3JHieBW4"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "921146443622-m82t9d0io6d3cd5h76ekj2qr7ptnmrhi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "921146443622-55damdhtj0ivoddobjif3dru3mcajhfu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.nakoCarService"
+              }
+            }
+          ]
         }
       }
     }

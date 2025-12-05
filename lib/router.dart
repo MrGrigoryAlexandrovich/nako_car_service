@@ -1,4 +1,7 @@
 import 'package:go_router/go_router.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+import "package:nako_car_service/screens/account.dart";
 import "package:nako_car_service/screens/confirm_password_code.dart";
 import "package:nako_car_service/screens/forgot_password.dart";
 import "package:nako_car_service/screens/home.dart";
@@ -9,6 +12,27 @@ import "package:nako_car_service/screens/reservation.dart";
 import "package:nako_car_service/screens/reservations.dart";
 
 final GoRouter router = GoRouter(
+  redirect: (context, state) {
+    final user = FirebaseAuth.instance.currentUser;
+    final loggingIn =
+        state.uri.toString() == '/login' ||
+        state.uri.toString() == '/register' ||
+        state.uri.toString() == '/forgot' ||
+        state.uri.toString() == '/confirm' ||
+        state.uri.toString() == '/new';
+
+    if (user == null && !loggingIn) {
+      return '/login';
+    }
+
+    if (user != null &&
+        (state.uri.toString() == '/login' ||
+            state.uri.toString() == '/register')) {
+      return '/';
+    }
+
+    return null;
+  },
   routes: [
     GoRoute(
       path: '/confirm',
@@ -30,5 +54,6 @@ final GoRouter router = GoRouter(
       path: '/reservations',
       builder: (context, state) => ReservationsScreen(),
     ),
+    GoRoute(path: '/account', builder: (context, state) => AccountScreen()),
   ],
 );

@@ -15,7 +15,12 @@ class MainScaffold extends StatefulWidget {
 class _MainScaffoldState extends State<MainScaffold> {
   int _currentIndex = 0;
 
-  final List<String> _routes = ['/', '/reservations', '/reservation'];
+  final List<String> _routes = [
+    '/',
+    '/reservations',
+    '/reservation',
+    "/account",
+  ];
 
   void _onTap(int index) {
     setState(() {
@@ -48,6 +53,10 @@ class _MainScaffoldState extends State<MainScaffold> {
             IconButton(
               onPressed: () => _onTap(2),
               icon: Icon(Icons.event, color: _iconColor(2)),
+            ),
+            IconButton(
+              onPressed: () => _onTap(3),
+              icon: Icon(Icons.person, color: _iconColor(3)),
             ),
           ],
         ),

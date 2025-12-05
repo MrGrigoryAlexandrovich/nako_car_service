@@ -1,59 +1,12 @@
 import "package:flutter/material.dart";
 import 'package:firebase_core/firebase_core.dart';
-//import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
 import 'firebase_options.dart';
 import "package:nako_car_service/router.dart";
 import "package:nako_car_service/components/main_scaffold.dart";
 
-/*
-Future<void> addSlot({
-  required String email,
-  required String number,
-  required String firstname,
-  required String lastname,
-  required int slot,
-  required DateTime selectedDate,
-}) async {
-  try {
-    final now = DateTime.now();
-    final createdAt = Timestamp.fromDate(now);
 
-    final date = Timestamp.fromDate(
-      DateTime(selectedDate.year, selectedDate.month, selectedDate.day),
-    );
-
-    final docId =
-        '${selectedDate.year.toString().padLeft(4, '0')}-'
-        '${selectedDate.month.toString().padLeft(2, '0')}-'
-        '${selectedDate.day.toString().padLeft(2, '0')}_$slot';
-
-    await FirebaseFirestore.instance.collection('reservations').doc(docId).set({
-      'email': email,
-      'number': number,
-      'firstname': firstname,
-      'lastname': lastname,
-      'slot': slot,
-      'createdAt': createdAt,
-      'date': date,
-    });
-
-    print('Slot za $firstname uspješno dodan!');
-  } catch (e) {
-    print('Greška pri dodavanju slota: $e');
-  }
-}
-
-
-await addSlot(
-    email: "ahmedcvrle3@gmail.com",
-    number: "060/339-4022",
-    firstname: "Ahmed3",
-    lastname: "Cvrčak3",
-    slot: 11,
-    selectedDate: DateTime(2025, 12, 3),
-  );
-*/
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -71,13 +24,42 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       routerConfig: router,
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
+      theme: ThemeData(
+        primaryColor: Colors.blueAccent,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
+        appBarTheme: AppBarTheme(backgroundColor: Colors.blueAccent),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.blueAccent,
+            foregroundColor: Colors.white,
+          ),
+        ),
+      ),
+      darkTheme: ThemeData.dark().copyWith(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.blue,
+          brightness: Brightness.dark,
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.blueAccent,
+            foregroundColor: Colors.white,
+          ),
+        ),
+      ),
       themeMode: ThemeMode.system,
       builder: (context, child) {
-        return MainScaffold(router: router, child: child!);
+        return StreamBuilder<User?>(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          builder: (context, snapshot) {
+            final user = snapshot.data;
+            if (user != null) {
+              return MainScaffold(router: router, child: child!);
+            }
+            return child!;
+          },
+        );
       },
     );
   }
 }
-
